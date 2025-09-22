@@ -53,6 +53,11 @@
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
 }
 
+.cart-btn:hover {
+  cursor: pointer;
+  color: rgb(255, 81, 0);
+}
+
 /* Header Klassen */
 
 .web-header {
@@ -150,4 +155,26 @@
 .order {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.order-name {
+  font-size: 24px;
+  color: rgb(255, 81, 0);
+}
+
+.dish-amount {
+  font-size: 20px;
+}
+
+.order-btn-container {
+  display: flex;
+  gap: 16px;
+}
+
+.cart-btn {
+  font-size: 64px;
+  background: none;
+  border: none;
+  color: rgba(95, 31, 1, 0.652);
 }

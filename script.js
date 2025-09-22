@@ -30,7 +30,7 @@ function createOrder(index, category) {
   const key = `${category}-${index}`;
   const dishObject = dishes[category][index];
 
-  let priceContainer = document.getElementById("price-total");
+  const priceContainer = document.getElementById("price-total");
 
   total_price += dishObject.price;
   priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
@@ -63,11 +63,41 @@ function updateOrderItemDOM(key) {
 }
 
 document.addEventListener("click", (element) => {
-  const addBtn = element.target.closest(".add-to-basked-btn");
-  if (addBtn) {
-    const index = addBtn.dataset.index;
-    const category = addBtn.dataset.category;
+  const addOrderBtn = element.target.closest(".add-to-basked-btn");
+  const cartBtn = element.target.closest(".cart-btn");
+
+  if (addOrderBtn) {
+    const index = addOrderBtn.dataset.index;
+    const category = addOrderBtn.dataset.category;
     createOrder(index, category);
     return;
+  }
+
+  if (cartBtn) {
+    const key = cartBtn.dataset.key;
+    const action = cartBtn.dataset.action;
+
+    const priceContainer = document.getElementById("price-total");
+
+    if (!orders[key]) return;
+
+    if (action === "plus") {
+      orders[key].amount++;
+      total_price += orders[key].price;
+      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+      updateOrderItemDOM(key);
+    } else if (action === "minus") {
+      orders[key].amount--;
+      total_price -= orders[key].price;
+      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+      updateOrderItemDOM(key);
+      if (orders[key].amount <= 0) {
+        delete orders[key];
+        const el = CONTAINER_BASKED.querySelector(`[data-key="${key}"]`);
+        if (el) el.remove();
+      } else {
+        updateCartItemDOM(key);
+      }
+    }
   }
 });

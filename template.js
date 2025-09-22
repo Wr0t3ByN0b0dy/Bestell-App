@@ -14,12 +14,12 @@ function createDishTemplate(index, dish, category) {
 
 function createOrderTemplate(key, dishObject) {
   return `
-    <div class="order-item" data-key="${key}">
-      <h4 class="order-name">${dishObject.name}</h4>
+    <div class="order-item py-16" data-key="${key}">
+      <h4 class="order-name px-16">${dishObject.name}</h4>
         <div class="order py-16">
           <p class="dish-amount">1x</p>
           <p class="dish-price">${formatPrice(dishObject.price)}</p>
-          <div>
+          <div class="order-btn-container">
             <button class="cart-btn" data-action="plus" data-key="${key}">+</button>
             <button class="cart-btn" data-action="minus" data-key="${key}">-</button>
           </div>
