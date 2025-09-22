@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Klassen */
+
+.web-header {
+  height: 114px;
+  display: flex;
+  align-items: center;
+  padding-left: 64px;
+  background-color: rgb(255, 123, 0);
+}
+.web-logo {
+  width: 256px;
+}
+
+/* Main Klassen */
+
+.banner {
+  width: 100%;
+  height: 256px;
+  object-fit: cover;
+}
+
+.menu-container {
+  display: flex;
+  gap: 16px;
+  padding: 0px 32px 32px 32px;
+}
+
+.menu-list {
+  padding-top: 16px;
+}
+
+.restaurant-name {
+  text-align: center;
+}
