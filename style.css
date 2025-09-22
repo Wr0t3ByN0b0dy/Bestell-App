@@ -37,3 +37,10 @@
 .restaurant-name {
   text-align: center;
 }
+
+.dish {
+  width: 750px;
+  display: flex;
+  border: 2px solid rgb(0, 0, 0);
+  justify-content: space-between;
+}

@@ -8,7 +8,7 @@
 
     <title>Bestell-App</title>
   </head>
-  <body>
+  <body onload="renderDishes()">
     <header class="web-header">
       <a href="#"
         ><img
@@ -26,16 +26,16 @@
       <section class="menu-container">
         <div class="menu-list">
           <h1 class="restaurant-name">Pasta & Pizza Express</h1>
-          <section id="italian-pizza" class="dishes">
+          <section id="pizza" class="dishes">
             <h2 class="category my-16">Pizza</h2>
           </section>
-          <section id="italian-pasta" class="dishes">
+          <section id="pasta" class="dishes">
             <h2 class="category my-16">Pasta</h2>
           </section>
-          <section id="italian-dessert" class="dishes">
+          <section id="dessert" class="dishes">
             <h2 class="category my-16">Dessert</h2>
           </section>
-          <section id="italian-drinks" class="dishes">
+          <section id="drinks" class="dishes">
             <h2 class="category my-16">Drinks</h2>
           </section>
         </div>
@@ -44,7 +44,7 @@
           <hr class="head-separator" />
           <section id="basked"></section>
           <div class="basked-menu">
-            <p id="total-price">Gesammtpreis: 0.00 €</p>
+            <p class="total-price">Gesammtpreis: 0.00 €</p>
             <button class="basked-btn">Lieferung</button>
             <button class="basked-btn">Abholung</button>
             <button class="basked-btn">Bestellen</button>
@@ -55,5 +55,9 @@
     <footer class="webseite-footer">
       <img src="./assets/wave.svg" alt="" />
     </footer>
+
+    <script src="db.js"></script>
+    <script src="template.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
