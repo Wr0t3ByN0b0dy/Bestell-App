@@ -199,6 +199,11 @@
   font-size: 28px;
 }
 
+.dialog-order-card {
+  display: flex;
+  justify-content: space-between;
+}
+
 .order-dialog-content {
   display: flex;
   flex-direction: column;

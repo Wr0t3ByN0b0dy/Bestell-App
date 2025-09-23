@@ -37,8 +37,8 @@ function createOrderDialog(key, value) {
           <p>${value.amount}x</p>
           <p>${formatPrice(value.amount * value.price)}</p>
         </div>
-        <hr class="separator" />
     </div>
+    <hr class="separator" />
   `;
 }
 
