@@ -48,8 +48,12 @@
               <p id="price-total" class="total-price">Gesammtpreis: 0.00 €</p>
             </div>
             <div>
-              <button class="basked-btn px-16">Lieferung</button>
-              <button class="basked-btn px-16">Abholung</button>
+              <button class="basked-btn px-16" data-action="delivery">
+                Lieferung
+              </button>
+              <button class="basked-btn px-16" data-action="pickup">
+                Abholung
+              </button>
             </div>
             <button class="basked-btn px-16">Bestellen</button>
           </div>
@@ -59,6 +63,21 @@
     <footer class="webseite-footer">
       <img src="./assets/wave.svg" alt="" />
     </footer>
+
+    <dialog id="order-dialog">
+      <header>
+        <img
+          src="./assets/pizza-logo.png"
+          alt="Das Logo von Pizza & Pasta Express"
+        />
+        <h2>
+          Vielen Dank für ihre Bestellung bei<br />
+          Pizza & Pasta Express
+        </h2>
+      </header>
+      <main id="dialog-container"></main>
+      <footer id="dialog-footer"></footer>
+    </dialog>
 
     <script src="db.js"></script>
     <script src="template.js"></script>

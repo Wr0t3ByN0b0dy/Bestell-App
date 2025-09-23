@@ -3,6 +3,7 @@ const CONTAINER_PASTA = document.getElementById("pasta");
 const CONTAINER_DESSERT = document.getElementById("dessert");
 const CONTAINER_DRINKS = document.getElementById("drinks");
 const CONTAINER_BASKED = document.getElementById("basked");
+const ORDER_DIALOG = document.getElementById("order-dialog");
 
 let total_price = 0;
 let delivery = false;
@@ -65,18 +66,17 @@ function updateOrderItemDOM(key) {
 document.addEventListener("click", (element) => {
   const addOrderBtn = element.target.closest(".add-to-basked-btn");
   const cartBtn = element.target.closest(".cart-btn");
+  const baskedBtn = element.target.closest(".basked-btn");
 
   if (addOrderBtn) {
     const index = addOrderBtn.dataset.index;
     const category = addOrderBtn.dataset.category;
     createOrder(index, category);
-    return;
   }
 
   if (cartBtn) {
     const key = cartBtn.dataset.key;
     const action = cartBtn.dataset.action;
-
     const priceContainer = document.getElementById("price-total");
 
     if (!orders[key]) return;
@@ -98,6 +98,27 @@ document.addEventListener("click", (element) => {
       } else {
         updateCartItemDOM(key);
       }
+    }
+  }
+
+  if (baskedBtn) {
+    const action = baskedBtn.dataset.action;
+    const priceContainer = document.getElementById("price-total");
+
+    if (action === "delivery") {
+      if (delivery) return;
+
+      delivery = true;
+      total_price += 5;
+      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+    } else if (action === "pickup") {
+      if (!delivery) return;
+
+      delivery = false;
+      total_price -= 5;
+      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+    } else {
+      ORDER_DIALOG.showModal();
     }
   }
 });
