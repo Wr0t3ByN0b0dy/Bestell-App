@@ -83,6 +83,8 @@ document.addEventListener("click", (element) => {
     const index = addOrderBtn.dataset.index;
     const category = addOrderBtn.dataset.category;
     createOrder(index, category);
+
+    document.getElementById("confirm-order").disabled = false;
   }
 
   if (cartBtn) {
