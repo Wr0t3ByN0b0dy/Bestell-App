@@ -178,3 +178,44 @@
   border: none;
   color: rgb(0, 0, 0);
 }
+
+/* Dialog Klassen */
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-headline {
+  text-align: center;
+  font-size: 28px;
+}
+
+.order-dialog-content {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.logo {
+  width: 128px;
+}
+
+.dialog-footer-content {
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-amount-price {
+  display: flex;
+  justify-content: flex-end;
+  gap: 64px;
+}

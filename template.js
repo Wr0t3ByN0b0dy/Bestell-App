@@ -31,9 +31,9 @@ function createOrderTemplate(key, dishObject) {
 
 function createOrderDialog(key, value) {
   return `
-    <div>
-      <h4>${value.name}</h4>
-        <div>
+    <div class="dialog-order-card">
+      <h4 class="px-16 py-16">${value.name}</h4>
+        <div class="dialog-amount-price px-32 py-16">
           <p>${value.amount}x</p>
           <p>${formatPrice(value.amount * value.price)}</p>
         </div>

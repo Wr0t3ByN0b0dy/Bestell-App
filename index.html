@@ -66,19 +66,20 @@
       <img src="./assets/wave.svg" alt="" />
     </footer>
 
-    <dialog id="order-dialog">
-      <header>
+    <dialog id="order-dialog" class="dialog">
+      <header class="dialog-header">
         <img
+          class="logo"
           src="./assets/pizza-logo.png"
           alt="Das Logo von Pizza & Pasta Express"
         />
-        <h2>
+        <h2 class="dialog-headline px-16 py-16">
           Vielen Dank für ihre Bestellung bei<br />
           Pizza & Pasta Express
         </h2>
       </header>
-      <main id="dialog-container"></main>
-      <footer id="dialog-footer"></footer>
+      <main id="dialog-container" class="order-dialog-content"></main>
+      <footer id="dialog-footer" class="dialog-footer-content"></footer>
     </dialog>
 
     <script src="db.js"></script>
