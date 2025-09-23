@@ -45,6 +45,7 @@ function createOrder(index, category) {
       category,
       index: index,
       amount: 1,
+      name: dishObject.name,
       price: dishObject.price,
     };
   }
@@ -61,6 +62,16 @@ function updateOrderItemDOM(key) {
   container.querySelector(".dish-price").innerText = formatPrice(
     item.amount * item.price
   );
+}
+
+function createDialog(orders) {
+  const orderDialogCard = document.getElementById("dialog-container");
+  const orderDialogFooter = document.getElementById("dialog-footer");
+  Object.entries(orders).map(([key, value]) => {
+    orderDialogCard.innerHTML += createOrderDialog(key, value);
+  });
+  orderDialogFooter.innerHTML = createDialogFooter(delivery, total_price);
+  ORDER_DIALOG.showModal();
 }
 
 document.addEventListener("click", (element) => {
@@ -118,7 +129,7 @@ document.addEventListener("click", (element) => {
       total_price -= 5;
       priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
     } else {
-      ORDER_DIALOG.showModal();
+      createDialog(orders);
     }
   }
 });

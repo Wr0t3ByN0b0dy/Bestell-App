@@ -28,3 +28,40 @@ function createOrderTemplate(key, dishObject) {
     </div>
   `;
 }
+
+function createOrderDialog(key, value) {
+  return `
+    <div>
+      <h4>${value.name}</h4>
+        <div>
+          <p>${value.amount}x</p>
+          <p>${formatPrice(value.amount * value.price)}</p>
+        </div>
+        <hr class="separator" />
+    </div>
+  `;
+}
+
+function createDialogFooter(delivery, total_price) {
+  if (delivery) {
+    return `
+      <div>
+        <p>Die voraussichtliche Lieferzeit beträgt ca. 25-30 Minuten.</p>
+        <div>
+          <p>Gesammtpreis</p>
+          <p>${formatPrice(total_price)}</p>
+        </div>
+      </div>
+    `;
+  } else {
+    return `
+    <div>
+        <p>Die voraussichtliche Abholzeit beträgt ca. 15–20 Minuten.</p>
+        <div>
+          <p>Gesammtpreis</p>
+          <p>${formatPrice(total_price)}</p>
+        </div>
+      </div>
+    `;
+  }
+}
