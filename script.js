@@ -109,7 +109,10 @@ document.addEventListener("click", (element) => {
         const el = CONTAINER_BASKED.querySelector(`[data-key="${key}"]`);
         if (el) el.remove();
       } else {
-        updateCartItemDOM(key);
+        updateOrderItemDOM(key);
+      }
+      if (total_price == 0 || delivery == true) {
+        document.getElementById("confirm-order").disabled = true;
       }
     }
   }
@@ -120,12 +123,14 @@ document.addEventListener("click", (element) => {
 
     if (action === "delivery") {
       if (delivery) return;
+      baskedBtn.classList.toggle("btn-onclick");
 
       delivery = true;
       total_price += 5;
       priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
     } else if (action === "pickup") {
       if (!delivery) return;
+      baskedBtn.classList.toggle("btn-onclick");
 
       delivery = false;
       total_price -= 5;
