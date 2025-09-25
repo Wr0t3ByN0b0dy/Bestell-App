@@ -1,0 +1,105 @@
+/* Margin Klassen */
+
+/* Außenabstände Oben und Unten */
+.my-8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.my-16 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.my-32 {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.my-64 {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+
+.my-128 {
+  margin-top: 128px;
+  margin-bottom: 128px;
+}
+
+/* Außenabstände Links und Rechts */
+.mx-8 {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.mx-16 {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.mx-32 {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.mx-64 {
+  margin-left: 64px;
+  margin-right: 64px;
+}
+
+.mx-128 {
+  margin-left: 128px;
+  margin-right: 128px;
+}
+
+/* Innenabstände Oben und Unten */
+.py-8 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.py-16 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.py-64 {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.py-128 {
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+
+/* Innenabstände Links und Rechts */
+.px-8 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.px-16 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.px-32 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.px-64 {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+.px-128 {
+  padding-left: 128px;
+  padding-right: 128px;
+}

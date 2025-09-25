@@ -5,36 +5,6 @@
 
 /* Base Klassen */
 
-.my-16 {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-
-.py-16 {
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.py-32 {
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
-
-.px-16 {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-
-.px-32 {
-  padding-left: 32px;
-  padding-right: 32px;
-}
-
-.px-64 {
-  padding-left: 64px;
-  padding-right: 64px;
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -120,6 +90,12 @@
   padding-bottom: 16px;
 }
 
+.basked-section {
+  border: 2px solid rgb(0, 0, 0);
+  height: 556px;
+  overflow-y: scroll;
+}
+
 .basked-container {
   position: sticky;
   flex-grow: 1;
@@ -129,7 +105,6 @@
   width: 450px;
   background: rgb(255, 255, 255);
   margin-right: 16px;
-  height: 100vh;
 }
 
 .category {
@@ -146,6 +121,7 @@
   flex-direction: column;
   gap: 32px;
   align-items: center;
+  background: rgba(255, 123, 0, 0.751);
 }
 
 .total-price {
