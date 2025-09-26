@@ -28,6 +28,11 @@
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
 }
 
+.basked-btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
+}
+
 .cart-btn:hover {
   cursor: pointer;
   color: rgb(255, 81, 0);
@@ -97,7 +102,7 @@
 
 .basked-section {
   border: 2px solid rgb(0, 0, 0);
-  height: 556px;
+  height: 524px;
   overflow-y: scroll;
 }
 
@@ -110,6 +115,7 @@
   width: 450px;
   background: rgb(255, 255, 255);
   margin-right: 16px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
 }
 
 .category {
@@ -160,6 +166,11 @@
   color: rgb(0, 0, 0);
 }
 
+.webseite-footer-img {
+  height: 276px;
+  width: 100%;
+  object-fit: cover;
+}
 /* Dialog Klassen */
 
 .dialog {

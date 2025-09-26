@@ -123,14 +123,12 @@ document.addEventListener("click", (element) => {
 
     if (action === "delivery") {
       if (delivery) return;
-      baskedBtn.classList.toggle("btn-onclick");
 
       delivery = true;
       total_price += 5;
       priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
     } else if (action === "pickup") {
       if (!delivery) return;
-      baskedBtn.classList.toggle("btn-onclick");
 
       delivery = false;
       total_price -= 5;
