@@ -1,6 +1,6 @@
 /* Margin Klassen */
 
-/* Außenabstände Oben und Unten */
+/* Margin Oben und Unten */
 .my-8 {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -26,7 +26,7 @@
   margin-bottom: 128px;
 }
 
-/* Außenabstände Links und Rechts */
+/* Margin Links und Rechts */
 .mx-8 {
   margin-left: 8px;
   margin-right: 8px;
@@ -52,7 +52,9 @@
   margin-right: 128px;
 }
 
-/* Innenabstände Oben und Unten */
+/* Padding Klassen */
+
+/* Padding Oben und Unten */
 .py-8 {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -78,7 +80,7 @@
   padding-bottom: 128px;
 }
 
-/* Innenabstände Links und Rechts */
+/* Padding Links und Rechts */
 .px-8 {
   padding-left: 8px;
   padding-right: 8px;

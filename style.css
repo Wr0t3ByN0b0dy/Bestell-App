@@ -17,7 +17,7 @@
   box-shadow: 0px 1px 5px rgba(62, 58, 58, 0.479);
 }
 
-.btn-onclick {
+.active-btn {
   background: rgba(255, 123, 0, 0.751);
   transition: all 1s;
 }

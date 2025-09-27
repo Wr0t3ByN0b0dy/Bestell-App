@@ -127,12 +127,21 @@ document.addEventListener("click", (element) => {
       delivery = true;
       total_price += 5;
       priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+
+      document
+        .querySelector("[data-action='pickup']")
+        .classList.remove("active-btn");
+      baskedBtn.classList.add("active-btn");
     } else if (action === "pickup") {
       if (!delivery) return;
 
       delivery = false;
       total_price -= 5;
       priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+      document
+        .querySelector("[data-action='delivery']")
+        .classList.remove("active-btn");
+      baskedBtn.classList.add("active-btn");
     } else {
       createDialog(orders);
     }
