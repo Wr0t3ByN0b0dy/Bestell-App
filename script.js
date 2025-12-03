@@ -33,7 +33,7 @@ function createOrder(index, category) {
 
   const priceContainer = document.getElementById("price-total");
 
-  total_price += dishObject.price;
+  Math.round((total_price += dishObject.price));
   priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
 
   if (orders[key]) {
@@ -65,6 +65,7 @@ function updateOrderItemDOM(key) {
 }
 
 function createDialog(orders) {
+  const orderDialog = document.getElementById("order-dialog");
   const orderDialogCard = document.getElementById("dialog-container");
   const orderDialogFooter = document.getElementById("dialog-footer");
   Object.entries(orders).map(([key, value]) => {
@@ -72,78 +73,128 @@ function createDialog(orders) {
   });
   orderDialogFooter.innerHTML = createDialogFooter(delivery, total_price);
   ORDER_DIALOG.showModal();
+  orderDialog.classList.toggle("d-none");
+}
+
+const buttonActions = {
+  "add-to-basked": addToBaskedBtn,
+  "cart-add": cartAddBtn,
+  "cart-remove": cartRemoveBtn,
+  delivery: deliveryBtn,
+  pickup: pickupBtn,
+  confirm: confirmBtn,
+  "open-basked": openBaskedBtn,
+  "close-basked": closeBaskedBtn,
+};
+
+function addToBaskedBtn(btn) {
+  const index = btn.dataset.index;
+  const category = btn.dataset.category;
+
+  createOrder(index, category);
+
+  document.getElementById("confirm-order").disabled = false;
+}
+
+function cartAddBtn(btn) {
+  const key = btn.dataset.key;
+  if (!orders[key]) return;
+
+  orders[key].amount++;
+  total_price += orders[key].price;
+
+  updateOrderItemDOM(key);
+
+  document.getElementById(
+    "price-total"
+  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+}
+
+function cartRemoveBtn(btn) {
+  const key = btn.dataset.key;
+  if (!orders[key]) return;
+
+  console.log("Debug: dataset-key: " + key);
+
+  orders[key].amount--;
+  total_price -= orders[key].price;
+
+  document.getElementById(
+    "price-total"
+  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+
+  if (orders[key].amount <= 0) {
+    delete orders[key];
+    CONTAINER_BASKED.querySelector(`[data-key="${key}"]`)?.remove();
+  } else {
+    updateOrderItemDOM(key);
+  }
+
+  if (total_price === 0 || delivery === true) {
+    document.getElementById("confirm-order").disabled = true;
+  }
+}
+
+function deliveryBtn(btn) {
+  if (delivery) return;
+  delivery = true;
+
+  total_price += 5;
+  document.getElementById(
+    "price-total"
+  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+
+  document
+    .querySelector("[data-action='pickup']")
+    .classList.remove("active-btn");
+  btn.classList.add("active-btn");
+}
+
+function pickupBtn(btn) {
+  if (!delivery) return;
+  delivery = false;
+
+  total_price -= 5;
+  document.getElementById(
+    "price-total"
+  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+
+  document
+    .querySelector("[data-action='delivery']")
+    .classList.remove("active-btn");
+  btn.classList.add("active-btn");
+}
+
+function confirmBtn() {
+  createDialog(orders);
+}
+
+function openBaskedBtn() {
+  document
+    .getElementById("menu-list-container")
+    .classList.add("hide-menu-list");
+
+  document
+    .getElementById("main-basked-container")
+    .classList.remove("hide-basked");
+}
+
+function closeBaskedBtn() {
+  document
+    .getElementById("menu-list-container")
+    .classList.remove("hide-menu-list");
+
+  document.getElementById("main-basked-container").classList.add("hide-basked");
 }
 
 document.addEventListener("click", (element) => {
-  const addOrderBtn = element.target.closest(".add-to-basked-btn");
-  const cartBtn = element.target.closest(".cart-btn");
-  const baskedBtn = element.target.closest(".basked-btn");
+  const btn = element.target.closest("[data-action]");
+  if (!btn) return;
 
-  if (addOrderBtn) {
-    const index = addOrderBtn.dataset.index;
-    const category = addOrderBtn.dataset.category;
-    createOrder(index, category);
+  const action = btn.dataset.action;
+  const handleButtons = buttonActions[action];
 
-    document.getElementById("confirm-order").disabled = false;
-  }
-
-  if (cartBtn) {
-    const key = cartBtn.dataset.key;
-    const action = cartBtn.dataset.action;
-    const priceContainer = document.getElementById("price-total");
-
-    if (!orders[key]) return;
-
-    if (action === "plus") {
-      orders[key].amount++;
-      total_price += orders[key].price;
-      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
-      updateOrderItemDOM(key);
-    } else if (action === "minus") {
-      orders[key].amount--;
-      total_price -= orders[key].price;
-      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
-      updateOrderItemDOM(key);
-      if (orders[key].amount <= 0) {
-        delete orders[key];
-        const el = CONTAINER_BASKED.querySelector(`[data-key="${key}"]`);
-        if (el) el.remove();
-      } else {
-        updateOrderItemDOM(key);
-      }
-      if (total_price == 0 || delivery == true) {
-        document.getElementById("confirm-order").disabled = true;
-      }
-    }
-  }
-
-  if (baskedBtn) {
-    const action = baskedBtn.dataset.action;
-    const priceContainer = document.getElementById("price-total");
-
-    if (action === "delivery") {
-      if (delivery) return;
-
-      delivery = true;
-      total_price += 5;
-      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
-
-      document
-        .querySelector("[data-action='pickup']")
-        .classList.remove("active-btn");
-      baskedBtn.classList.add("active-btn");
-    } else if (action === "pickup") {
-      if (!delivery) return;
-
-      delivery = false;
-      total_price -= 5;
-      priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
-      document
-        .querySelector("[data-action='delivery']")
-        .classList.remove("active-btn");
-      baskedBtn.classList.add("active-btn");
-    } else {
-      createDialog(orders);
-    }
+  if (handleButtons) {
+    handleButtons(btn);
   }
 });

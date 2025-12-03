@@ -1,3 +1,13 @@
+.d-none {
+  display: none;
+}
+
+/* Color Klassen */
+
+.color-255-81-0 {
+  color: rgb(255, 81, 0);
+}
+
 /* Margin Klassen */
 
 /* Margin Oben und Unten */
@@ -104,4 +114,18 @@
 .px-128 {
   padding-left: 128px;
   padding-right: 128px;
+}
+
+/* Font-Size Klassen */
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-28 {
+  font-size: 28px;
 }

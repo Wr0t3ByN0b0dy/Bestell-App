@@ -10,13 +10,19 @@
     <title>Bestell-App</title>
   </head>
   <body onload="renderDishes()">
-    <header class="web-header">
+    <header class="web-header px-32">
       <a href="#"
         ><img
           class="web-logo"
           src="./assets/webseite-logo.png"
           alt="Das Logo der Webseite"
       /></a>
+      <button
+        data-action="open-basked"
+        class="open-basked-btn font-size-16 px-8 py-8"
+      >
+        Warenkorb
+      </button>
     </header>
     <main>
       <img
@@ -25,7 +31,7 @@
         alt="Das Banner von Pizza & Pasta Express"
       />
       <section class="menu-container">
-        <div class="menu-list">
+        <div id="menu-list-container" class="px-16 menu-list">
           <h1 class="restaurant-name">Pasta & Pizza Express</h1>
           <section id="pizza" class="dishes">
             <h2 class="category my-16">Pizza</h2>
@@ -40,9 +46,15 @@
             <h2 class="category my-16">Drinks</h2>
           </section>
         </div>
-        <aside class="basked-container">
-          <div class="py-32">
+        <aside id="main-basked-container" class="basked-container hide-basked">
+          <div class="py-32 basked-header">
             <h2 class="basked-head py-16">Warenkorb</h2>
+            <button
+              data-action="close-basked"
+              class="close-basked-btn font-size-16 px-8 py-8"
+            >
+              Close
+            </button>
           </div>
           <div class="basked-section" id="basked"></div>
           <div class="basked-menu py-32">
@@ -50,17 +62,25 @@
               <p id="price-total" class="total-price">Gesammtpreis: 0.00 €</p>
             </div>
             <div>
-              <button class="basked-btn px-32 py-16" data-action="delivery">
+              <button
+                data-action="delivery"
+                class="basked-btn font-size-16 px-32 py-16"
+              >
                 Lieferung
               </button>
               <button
-                class="basked-btn active-btn px-32 py-16"
                 data-action="pickup"
+                class="basked-btn active-btn font-size-16 px-32 py-16"
               >
                 Abholung
               </button>
             </div>
-            <button id="confirm-order" class="basked-btn px-32 py-16" disabled>
+            <button
+              data-action="confirm"
+              id="confirm-order"
+              class="basked-btn font-size-16 px-32 py-16"
+              disabled
+            >
               Bestellen
             </button>
           </div>
@@ -71,7 +91,7 @@
       <img class="webseite-footer-img" src="./assets/wave.svg" alt="" />
     </footer>
 
-    <dialog id="order-dialog" class="dialog">
+    <dialog id="order-dialog" class="dialog d-none">
       <header class="dialog-header">
         <img
           class="logo"
@@ -84,7 +104,7 @@
         </h2>
       </header>
       <main id="dialog-container" class="order-dialog-content"></main>
-      <footer id="dialog-footer" class="dialog-footer-content"></footer>
+      <footer id="dialog-footer" class="dialog-footer-content py-16"></footer>
     </dialog>
 
     <script src="db.js"></script>
