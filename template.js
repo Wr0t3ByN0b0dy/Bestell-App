@@ -48,7 +48,7 @@ function createDialogFooter(delivery, total_price) {
   if (delivery) {
     return `
       <div>
-        <p class="font-size-28">Die voraussichtliche Lieferzeit beträgt ca. 25-30 Minuten.</p>
+        <p class="font-size-28 text-center">Die voraussichtliche Lieferzeit beträgt<br /> ca. 25-30 Minuten.</p>
         <div class="dialog-footer-price py-16">
           <p class="font-size-24">Gesammtpreis</p>
           <p class="font-size-24 color-255-81-0">${formatPrice(total_price)}</p>
@@ -58,7 +58,7 @@ function createDialogFooter(delivery, total_price) {
   } else {
     return `
     <div>
-        <p class="font-size-28">Die voraussichtliche Abholzeit beträgt ca. 15-20 Minuten.</p>
+        <p class="font-size-28 text-center">Die voraussichtliche Abholzeit beträgt<br /> ca. 15-20 Minuten.</p>
         <div class="dialog-footer-price py-16">
           <p class="font-size-24">Gesammtpreis</p>
           <p class="font-size-24 color-255-81-0">${formatPrice(total_price)}</p>

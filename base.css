@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.text-center {
+  text-align: center;
+}
+
 /* Color Klassen */
 
 .color-255-81-0 {
