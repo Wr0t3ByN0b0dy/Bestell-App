@@ -36,6 +36,17 @@
   color: rgb(255, 81, 0);
 }
 
+.open-basked-btn:hover {
+  cursor: pointer;
+  background: rgba(255, 123, 0, 0.751);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
+}
+
+.close-basked-btn:hover {
+  cursor: pointer;
+  background: rgba(255, 123, 0, 0.751);
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.467);
+}
 /* Header Klassen */
 
 .web-header {
@@ -208,7 +219,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 750px;
-  max-height: 750px;
+  min-height: 750px;
+  max-height: 950px;
   display: flex;
   flex-direction: column;
 }

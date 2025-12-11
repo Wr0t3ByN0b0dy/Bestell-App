@@ -4,8 +4,10 @@ const CONTAINER_DESSERT = document.getElementById("dessert");
 const CONTAINER_DRINKS = document.getElementById("drinks");
 const CONTAINER_BASKED = document.getElementById("basked");
 const ORDER_DIALOG = document.getElementById("order-dialog");
+const BODY = document.getElementsByTagName("body")[0];
 
 let total_price = 0;
+let rounded_total_price = 0;
 let delivery = false;
 
 const orders = {};
@@ -32,8 +34,8 @@ function createOrder(index, category) {
   const dishObject = dishes[category][index];
 
   const priceContainer = document.getElementById("price-total");
-
-  Math.round((total_price += dishObject.price));
+  total_price += dishObject.price;
+  rounded_total_price = Math.round(total_price);
   priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
 
   if (orders[key]) {
@@ -65,7 +67,6 @@ function updateOrderItemDOM(key) {
 }
 
 function createDialog(orders) {
-  const orderDialog = document.getElementById("order-dialog");
   const orderDialogCard = document.getElementById("dialog-container");
   const orderDialogFooter = document.getElementById("dialog-footer");
   Object.entries(orders).map(([key, value]) => {
@@ -73,7 +74,8 @@ function createDialog(orders) {
   });
   orderDialogFooter.innerHTML = createDialogFooter(delivery, total_price);
   ORDER_DIALOG.showModal();
-  orderDialog.classList.toggle("d-none");
+  ORDER_DIALOG.classList.toggle("d-none");
+  BODY.classList.toggle("overflow-hidden");
 }
 
 const buttonActions = {
@@ -102,6 +104,7 @@ function cartAddBtn(btn) {
 
   orders[key].amount++;
   total_price += orders[key].price;
+  rounded_total_price = Math.round(total_price);
 
   updateOrderItemDOM(key);
 
@@ -118,6 +121,7 @@ function cartRemoveBtn(btn) {
 
   orders[key].amount--;
   total_price -= orders[key].price;
+  rounded_total_price = Math.round(total_price);
 
   document.getElementById(
     "price-total"
@@ -130,7 +134,11 @@ function cartRemoveBtn(btn) {
     updateOrderItemDOM(key);
   }
 
-  if (total_price === 0 || delivery === true) {
+  console.log(total_price);
+  if (
+    (rounded_total_price === 5 && delivery === true) ||
+    (rounded_total_price === 0 && delivery === false)
+  ) {
     document.getElementById("confirm-order").disabled = true;
   }
 }
@@ -140,6 +148,7 @@ function deliveryBtn(btn) {
   delivery = true;
 
   total_price += 5;
+  rounded_total_price = Math.round(total_price);
   document.getElementById(
     "price-total"
   ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
@@ -155,6 +164,7 @@ function pickupBtn(btn) {
   delivery = false;
 
   total_price -= 5;
+  rounded_total_price = Math.round(total_price);
   document.getElementById(
     "price-total"
   ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
@@ -188,6 +198,23 @@ function closeBaskedBtn() {
 }
 
 document.addEventListener("click", (element) => {
+  if (ORDER_DIALOG.open) {
+    const orderDialogCard = document.getElementById("dialog-container");
+    const rect = ORDER_DIALOG.getBoundingClientRect();
+    const inDialog =
+      element.clientX >= rect.left &&
+      element.clientX <= rect.right &&
+      element.clientY >= rect.top &&
+      element.clientY <= rect.bottom;
+
+    if (!inDialog) {
+      ORDER_DIALOG.close();
+      BODY.classList.toggle("overflow-hidden");
+      ORDER_DIALOG.classList.toggle("d-none");
+      orderDialogCard.innerHTML = "";
+    }
+  }
+
   const btn = element.target.closest("[data-action]");
   if (!btn) return;
 
