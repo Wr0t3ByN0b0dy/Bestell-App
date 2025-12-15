@@ -33,10 +33,14 @@ function createOrder(index, category) {
   const key = `${category}-${index}`;
   const dishObject = dishes[category][index];
 
-  const priceContainer = document.getElementById("price-total");
   total_price += dishObject.price;
   rounded_total_price = Math.round(total_price);
-  priceContainer.innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+  document.getElementById("price-value").innerText = `${formatPrice(
+    total_price
+  )}`;
+  document.getElementById("meal-value").innerText = `${formatPrice(
+    total_price
+  )}`;
 
   if (orders[key]) {
     orders[key].amount++;
@@ -108,9 +112,12 @@ function cartAddBtn(btn) {
 
   updateOrderItemDOM(key);
 
-  document.getElementById(
-    "price-total"
-  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+  document.getElementById("price-value").innerText = `${formatPrice(
+    total_price
+  )}`;
+  document.getElementById("meal-value").innerText = `${formatPrice(
+    total_price
+  )}`;
 }
 
 function cartRemoveBtn(btn) {
@@ -123,9 +130,12 @@ function cartRemoveBtn(btn) {
   total_price -= orders[key].price;
   rounded_total_price = Math.round(total_price);
 
-  document.getElementById(
-    "price-total"
-  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+  document.getElementById("price-value").innerText = `${formatPrice(
+    total_price
+  )}`;
+  document.getElementById("meal-value").innerText = `${formatPrice(
+    total_price
+  )}`;
 
   if (orders[key].amount <= 0) {
     delete orders[key];
@@ -149,9 +159,10 @@ function deliveryBtn(btn) {
 
   total_price += 5;
   rounded_total_price = Math.round(total_price);
-  document.getElementById(
-    "price-total"
-  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+  document.getElementById("price-value").innerText = `${formatPrice(
+    total_price
+  )}`;
+  document.getElementById("deliver-value").innerText = `5.00 €`;
 
   document
     .querySelector("[data-action='pickup']")
@@ -165,9 +176,10 @@ function pickupBtn(btn) {
 
   total_price -= 5;
   rounded_total_price = Math.round(total_price);
-  document.getElementById(
-    "price-total"
-  ).innerText = `Gesammtpreis: ${formatPrice(total_price)}`;
+  document.getElementById("price-value").innerText = `${formatPrice(
+    total_price
+  )}`;
+  document.getElementById("deliver-value").innerText = `0.00 €`;
 
   document
     .querySelector("[data-action='delivery']")

@@ -24,7 +24,6 @@ function createOrderTemplate(key, dishObject) {
             <button data-action="cart-remove" class="cart-btn" data-key="${key}">-</button>
           </div>
         </div>
-        <hr class="separator" />
     </div>
   `;
 }
@@ -40,7 +39,6 @@ function createOrderDialog(key, value) {
           )}</p>
         </div>
     </div>
-    <hr class="separator" />
   `;
 }
 
