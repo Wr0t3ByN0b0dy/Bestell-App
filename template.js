@@ -14,7 +14,7 @@ function createDishTemplate(index, dish, category) {
 
 function createOrderTemplate(key, dishObject) {
   return `
-    <div class="order-item py-16" data-key="${key}">
+    <div class="order-item mx-64 my-16 px-64 py-16" data-key="${key}">
       <h4 class="order-name px-16">${dishObject.name}</h4>
         <div class="order py-16">
           <p class="dish-amount">1x</p>
