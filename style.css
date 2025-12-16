@@ -329,7 +329,7 @@
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
   .open-basked-btn {
     display: block;
   }
@@ -347,4 +347,49 @@
 }
 
 @media (max-width: 650px) {
+  .dish-name {
+    font-size: 20px;
+  }
+
+  .ingredients {
+    font-size: 14px;
+  }
+
+  .dish-price {
+    font-size: 16px;
+  }
+
+  .web-logo {
+    width: 150px;
+  }
+}
+
+@media (max-width: 500px) {
+  .dish {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-row {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dish-name {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .ingredients {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .dish-price {
+    font-size: 16px;
+    text-align: center;
+    padding-right: 0;
+    margin: auto;
+    padding-bottom: 8px;
+  }
 }
